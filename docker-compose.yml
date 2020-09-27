@@ -1,0 +1,30 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+  webpacker:
+    build: .
+    environment:
+      - NODE_ENV=development
+      - RAILS_ENV=development
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+    command: ./bin/webpack-dev-server
+    volumes:
+      - .:/monster_farm_2_app
+    ports:
+      - '127.0.0.1:3035:3035'
+  web:
+    build: .
+    command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/monster_farm_2_app
+    environment:
+      - WEBPACKER_DEV_SERVER_HOST=webpacker
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
