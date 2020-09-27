@@ -13,6 +13,7 @@ class CreateParameters < ActiveRecord::Migration[6.0]
       t.integer :avoidance_apptitude
       t.integer :defence
       t.integer :defence_apptitude
+      t.references :monster
       t.timestamps
     end
   end

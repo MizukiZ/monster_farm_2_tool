@@ -60,8 +60,10 @@ ActiveRecord::Schema.define(version: 2020_09_27_082601) do
     t.integer "avoidance_apptitude"
     t.integer "defence"
     t.integer "defence_apptitude"
+    t.bigint "monster_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["monster_id"], name: "index_parameters_on_monster_id"
   end
 
   add_foreign_key "monsters", "family_types", column: "main_family_type_id"
