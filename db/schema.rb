@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_09_27_102212) do
   end
 
   create_table "family_types", force: :cascade do |t|
-    t.text "CreateFamilyTypes"
+    t.text "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 2020_09_27_102212) do
 
   create_table "monsters", force: :cascade do |t|
     t.text "name"
-    t.bigint "main_family_type_id_id"
-    t.bigint "sub_family_type_id_id"
+    t.bigint "main_family_type_id"
+    t.bigint "sub_family_type_id"
     t.bigint "grow_type_id"
     t.integer "character"
     t.integer "moving_speed"
@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 2020_09_27_102212) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["grow_type_id"], name: "index_monsters_on_grow_type_id"
-    t.index ["main_family_type_id_id"], name: "index_monsters_on_main_family_type_id_id"
-    t.index ["sub_family_type_id_id"], name: "index_monsters_on_sub_family_type_id_id"
+    t.index ["main_family_type_id"], name: "index_monsters_on_main_family_type_id"
+    t.index ["sub_family_type_id"], name: "index_monsters_on_sub_family_type_id"
   end
 
   create_table "parameters", force: :cascade do |t|
@@ -75,6 +75,6 @@ ActiveRecord::Schema.define(version: 2020_09_27_102212) do
     t.index ["monster_id"], name: "index_parameters_on_monster_id"
   end
 
-  add_foreign_key "monsters", "family_types", column: "main_family_type_id_id"
-  add_foreign_key "monsters", "family_types", column: "sub_family_type_id_id"
+  add_foreign_key "monsters", "family_types", column: "main_family_type_id"
+  add_foreign_key "monsters", "family_types", column: "sub_family_type_id"
 end
