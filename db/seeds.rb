@@ -1,5 +1,5 @@
 require 'csv'
-dependencies_creation = false
+dependencies_creation = true
 
 if dependencies_creation
   # Create family types
@@ -37,14 +37,14 @@ def create_monster(monster_data)
 end
 
 # Create monsters
-number_to_alpha = { E: 1, D: 2, C: 3, B: 4, A: 5 }
+alpha_to_int = { E: 1, D: 2, C: 3, B: 4, A: 5 }
 FamilyType::TYPES.each do |type|
   monster_csv_file = File.read(Rails.root.join('lib', 'seeds', "#{type}_data.csv"))
   csv = CSV.parse(monster_csv_file, headers: true, encoding: 'ISO-8859-1')
   csv.each do |row|
     main_type, sub_type = row['family']&.split('×')
-    life_a, power_a, intelligence_a, accuracy_a, avoidance_a, defence_a = row['apptitude']&.split('')&.map { |a| number_to_alpha[a.to_sym] }
-
+    life_a, power_a, intelligence_a, accuracy_a, avoidance_a, defence_a = row['apptitude']&.split('')&.map { |a| alpha_to_int[a.to_sym] }
+    life_a_i, power_a_i, intelligence_a_i, accuracy_a_i, avoidance_a_i, defence_a_i = row['apptitude_order']&.split('')&.map(&:to_i)
     monster_data = {
         relation_data: {
           main_type: main_type,
@@ -60,12 +60,12 @@ FamilyType::TYPES.each do |type|
           life_span: row['life_span'],
         },
         parameter_data: {
-          life: row['life'], life_apptitude: life_a,
-          power: row['power'], power_apptitude: power_a,
-          intelligence: row['intelligence'], intelligence_apptitude: intelligence_a,
-          accuracy: row['accuracy'], accuracy_apptitude: accuracy_a,
-          avoidance: row['avoidance'], avoidance_apptitude: avoidance_a,
-          defence: row['defence'], defence_apptitude: defence_a,
+          life: row['life'], life_apptitude: life_a, life_apptitude_index: life_a_i,
+          power: row['power'], power_apptitude: power_a, power_apptitude_index: power_a_i,
+          intelligence: row['intelligence'], intelligence_apptitude: intelligence_a, intelligence_apptitude_index: intelligence_a_i,
+          accuracy: row['accuracy'], accuracy_apptitude: accuracy_a, accuracy_apptitude_index: accuracy_a_i,
+          avoidance: row['avoidance'], avoidance_apptitude: avoidance_a, avoidance_apptitude_index: avoidance_a_i,
+          defence: row['defence'], defence_apptitude: defence_a, defence_apptitude_index: defence_a_i,
         }
       }
 
