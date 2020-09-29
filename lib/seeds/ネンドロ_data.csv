@@ -1,0 +1,6 @@
+no,name,family,life,power,intelligence,accuracy,avoidance,defence,apptitude,apptitude_order,grow_type,conditions,character,moving_speed,guts_speed,life_span
+No.291,フラッペ,ネンドロ×ライガー,160,120,60,100,150,50,BCDCBE,135426,早熟,"闘魂,底力",60,3,12,330
+No.292,ドクドク,ネンドロ×ジョーカー,150,140,130,110,100,40,BBCCCE,123456,持続,"闘魂,逆上,本気",-80,2,14,310
+No.293,ネンドロ,ネンドロ×ネンドロ,190,120,30,40,150,70,ABEEBE,136524,晩成,"闘魂,底力",25,2,14,350
+No.294,アクアクレイ,ネンドロ×ゲル,140,130,80,70,120,90,BCDDCD,125634,普通,闘魂,10,2,14,350
+No.295,バトルクレイ,ネンドロ×？？？,,,,,,,,,,,,,,
