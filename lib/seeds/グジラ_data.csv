@@ -1,0 +1,6 @@
+no,name,family,life,power,intelligence,accuracy,avoidance,defence,apptitude,apptitude_order,grow_type,conditions,character,moving_speed,guts_speed,life_span
+No.224,ピンクグジラ,グジラ×ピクシー,120,150,110,70,100,90,CBCDCD,213645,早熟,"根性,逆上",-30,3,14,330
+No.225,グジコーン,グジラ×ライガー,140,160,130,110,120,100,CBCCCD,213546,早熟,"根性,底力",60,2,14,330
+No.226,グジラ,グジラ×グジラ,150,180,80,50,60,100,BADEDC,214653,晩成,"根性,底力",35,1,18,350
+No.227,ギガロン,グジラ×ゲル,100,150,120,80,90,110,BBCDDC,213654,普通,根性,15,2,16,350
+No.228,キプロス,グジラ×？？？,,,,,,,,,,,,,,
