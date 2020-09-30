@@ -6,7 +6,9 @@ class Monster < ApplicationRecord
   belongs_to :grow_type, optional: true
 
   include NumberToRank
- 
+
+  default_scope { includes(:conditions, :parameter, :main_family_type, :sub_family_type, :grow_type) }
+
   delegate :name, to: :main_family_type, prefix: true
   delegate :name, to: :sub_family_type, prefix: true, allow_nil: true
   delegate :title, to: :grow_type, prefix: true, allow_nil: true
