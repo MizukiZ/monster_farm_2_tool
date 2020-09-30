@@ -5,4 +5,6 @@ class Monster < ApplicationRecord
   belongs_to :sub_family_type, foreign_key: 'sub_family_type_id', class_name: 'FamilyType', optional: true
   belongs_to :grow_type, optional: true
 
+  include NumberToRank
+ 
 end
