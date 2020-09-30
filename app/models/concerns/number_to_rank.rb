@@ -12,10 +12,10 @@ module NumberToRank
   ]
 
   included do
-    attribute_names.each do |attr_name|
-      next unless REGISTERED_FIELDS.include?(attr_name.to_sym)
+    attribute_names.map(&:to_sym).each do |attr_name|
+      next unless REGISTERED_FIELDS.include?(attr_name)
       define_method "#{attr_name}_in_rank" do
-        number_to_rank(self[attr_name.to_sym])
+        number_to_rank(self[attr_name])
       end
     end
   end
