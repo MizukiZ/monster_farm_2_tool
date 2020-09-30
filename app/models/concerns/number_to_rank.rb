@@ -1,6 +1,8 @@
 module NumberToRank
   extend ActiveSupport::Concern
 
+  SUFFIX = '_in_int'
+
   REGISTERED_FIELDS = [
     :moving_speed,
     :life_apptitude,
@@ -14,8 +16,12 @@ module NumberToRank
   included do
     attribute_names.map(&:to_sym).each do |attr_name|
       next unless REGISTERED_FIELDS.include?(attr_name)
-      define_method "#{attr_name}_in_rank" do
+      define_method attr_name do # overwrite the existing gettter
         number_to_rank(self[attr_name])
+      end
+
+      define_method "#{attr_name}#{SUFFIX}" do # set method to get the original value
+        self[attr_name]
       end
     end
   end

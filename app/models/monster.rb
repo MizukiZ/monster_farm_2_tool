@@ -7,4 +7,11 @@ class Monster < ApplicationRecord
 
   include NumberToRank
  
+  delegate :name, to: :main_family_type, prefix: true
+  delegate :name, to: :sub_family_type, prefix: true, allow_nil: true
+  delegate :title, to: :grow_type, prefix: true, allow_nil: true
+
+  def conditions_csv
+    conditions.pluck(:title).join(', ')
+  end
 end
