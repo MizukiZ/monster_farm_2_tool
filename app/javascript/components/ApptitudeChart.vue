@@ -3,12 +3,12 @@ import { Radar } from 'vue-chartjs'
 export default {
   name: 'ApptitudeChart',
   extends: Radar,
-  props: ['chartData'],
+  props: ['apptitudeData'],
   mounted () {
     this.renderChart({
       labels: ['ライフ', 'ちから', 'かしこさ', '命中', '回避', '丈夫さ'],
       datasets: [ {
-        data: this.chartData,
+        data: this.apptitudeData,
         backgroundColor: 'rgba(95, 248, 218, 0.4)',
         borderColor: 'rgba(35, 151, 128 , 0.7)'
         } ] },
