@@ -5,6 +5,10 @@ import App from '../app.vue'
 
 Vue.use(Vuetify)
 
+// Global variables
+Vue.prototype.$parameterWordsArray = ["ライフ", "ちから", "かしこさ", "命中", "回避", "丈夫さ"]
+Vue.prototype.$ranksArray = ['E','D','C','B','A']
+
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     vuetify: new Vuetify(),

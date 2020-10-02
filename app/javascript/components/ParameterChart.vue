@@ -5,9 +5,13 @@ export default {
   extends: HorizontalBar,
   props: ["parameterData"],
   mounted() {
+    // inject parameter into parameter words
+    const labels_data = this.$parameterWordsArray.map( (paramWord, i) => {
+      return `${paramWord} ${this.parameterData[i]}`
+    })
     this.renderChart(
       {
-        labels: ["ライフ", "ちから", "かしこさ", "命中", "回避", "丈夫さ"],
+        labels: labels_data,
         datasets: [
           {
             backgroundColor: [
@@ -25,6 +29,7 @@ export default {
       {
         title: { display: true, text: "種族値パラメータ", fontSize: 16 },
         legend: { display: false },
+        tooltips: { enabled: false },
         responsive: true,
         maintainAspectRatio: false,
         scales: {

@@ -6,7 +6,7 @@
           <ParameterChart :parameterData="[120, 170, 190, 100, 80, 130]" />
         </v-col>
         <v-col sm="6">
-          <ApptitudeChart :apptitudeData="[4, 5, 5, 4, 2, 3]" />
+          <ApptitudeChart :apptitudeData="[4, 3, 2, 4, 2, 1]" />
         </v-col>
       </v-row>
     </v-container>
