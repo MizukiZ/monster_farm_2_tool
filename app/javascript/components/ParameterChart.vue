@@ -15,12 +15,12 @@ export default {
         datasets: [
           {
             backgroundColor: [
-              "#E2DB67",
-              "#DF5556",
-              "#5DDC5F",
-              "#CE50CF",
-              "#45CDC9",
-              "#4E52CF",
+              this.$colors.life,
+              this.$colors.power,
+              this.$colors.intelligence,
+              this.$colors.accuracy,
+              this.$colors.avoidance,
+              this.$colors.defence,
             ],
             data: this.parameterData,
           },
