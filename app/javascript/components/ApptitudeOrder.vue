@@ -1,13 +1,13 @@
 <template>
   <v-card width="400" class="text-center">
     <v-list disabled rounded>
-      <v-list-tile-content
+      <v-list-item-title
         class="font-weight-bold"
         :style="{ 'align-items': 'center' }"
       >
         適性順序
         <v-divider></v-divider>
-      </v-list-tile-content>
+      </v-list-item-title>
       <v-list-item-group v-for="(parameter, i) in sortedParamterOrder" :key="i">
         <v-list-item>
           <v-list-item-icon>
