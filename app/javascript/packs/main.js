@@ -7,8 +7,17 @@ Vue.use(Vuetify)
 
 // Global variables
 Vue.prototype.$parameterWordsArray = ["ライフ", "ちから", "かしこさ", "命中", "回避", "丈夫さ"]
+Vue.prototype.$parameterIcons = {
+  "ライフ": 'mdi-heart',
+  "ちから": 'mdi-arm-flex-outline',
+  "かしこさ": 'mdi-head-flash-outline',
+  "命中": 'mdi-bullseye-arrow',
+  "回避": 'mdi-shoe-sneaker',
+  "丈夫さ": 'mdi-shield-alert-outline'
+}
 Vue.prototype.$ranksArray = ['E','D','C','B','A']
 Vue.prototype.$colors = {
+  themeColor1: '#E48B03',
   life: '#E2DB67',
   power: '#DF5556',
   intelligence: '#5DDC5F',

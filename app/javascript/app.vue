@@ -10,12 +10,14 @@
         </v-col>
       </v-row>
     </v-container>
-    <IconCard :cardProps="{icon: 'mdi-heart-pulse', iconText: '寿命', value: '360週', color: ''}"/>
-    <IconCard :cardProps="{icon: 'mdi-chart-line', iconText: '成長', value: '早熟', color: ''}"/>
-    <IconCard :cardProps="{icon: 'mdi-run-fast', iconText: '移動', value: 'C', color: ''}"/>
-    <IconCard :cardProps="{icon: 'mdi-battery-charging', iconText: 'G回復', value: '12', color: ''}"/>
-    <IconCard :cardProps="{icon: 'mdi-account-switch-outline', iconText: '善悪', value: '55', color: ''}"/>
-    <IconCard :cardProps="{icon: 'mdi-account-convert', iconText: '状態', value: '底力,根性', color: ''}"/>
+    <IconCard :cardProps="{icon: 'mdi-heart-pulse', iconText: '寿命', value: '360週', color: this.$colors.themeColor1}"/>
+    <IconCard :cardProps="{icon: 'mdi-chart-line', iconText: '成長', value: '早熟', color: this.$colors.intelligence}"/>
+    <IconCard :cardProps="{icon: 'mdi-run-fast', iconText: '移動', value: 'C', color: this.$colors.avoidance}"/>
+    <IconCard :cardProps="{icon: 'mdi-battery-charging', iconText: 'G回復', value: '12', color: this.$colors.accuracy}"/>
+    <IconCard :cardProps="{icon: 'mdi-account-switch-outline', iconText: '善悪', value: '55', color: this.$colors.defence}"/>
+    <IconCard :cardProps="{icon: 'mdi-account-convert', iconText: '状態', value: '底力,根性', color: this.$colors.power}"/>
+
+    <ApptitudeOrder :apptitudeOrderData="[2,3,5,4,1,6]"/>
   </v-app>
 </template>
 
@@ -23,11 +25,13 @@
 import ApptitudeChart from "./components/ApptitudeChart";
 import ParameterChart from "./components/ParameterChart";
 import IconCard from "./components/IconCard";
+import ApptitudeOrder from "./components/ApptitudeOrder";
 export default {
   components: {
     ApptitudeChart,
     ParameterChart,
     IconCard,
+    ApptitudeOrder,
   },
   data: function () {
     return {};
