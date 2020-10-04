@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :family_types, only: [:index] do
     resources :monsters, only: [:index, :show]
   end
+
+  resources :monster_search, only: [:index]
 end

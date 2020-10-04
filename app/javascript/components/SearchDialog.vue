@@ -15,12 +15,12 @@
             <v-col cols="12" sm="6" md="4">
               <v-text-field
                 label="モンスター名"
-                v-model="searchParams.name"
+                v-model="search_params.name"
               ></v-text-field>
             </v-col>
             <v-col cols="12" sm="6" md="4">
               <v-select
-                v-model="searchParams.mainType"
+                v-model="search_params.main_type"
                 clearable
                 :items="[
                   { text: 'A', value: 1 },
@@ -32,7 +32,7 @@
             </v-col>
             <v-col cols="12" sm="6" md="4">
               <v-select
-                v-model="searchParams.subType"
+                v-model="search_params.sub_type"
                 clearable
                 :items="[
                   { text: 'A', value: 1 },
@@ -44,55 +44,55 @@
             </v-col>
             <v-col cols="12" sm="6" md="4">
               <v-select
-                v-model="searchParams.lifeApptitude"
+                v-model="search_params.life_apptitude"
                 clearable
-                :items="$options.rankSelections"
+                :items="$options.rank_selections"
                 label="ライフ適性"
               ></v-select>
             </v-col>
             <v-col cols="12" sm="6" md="4">
               <v-select
-                v-model="searchParams.powerApptitude"
+                v-model="search_params.power_apptitude"
                 clearable
-                :items="$options.rankSelections"
+                :items="$options.rank_selections"
                 label="ちから適性"
               ></v-select>
             </v-col>
             <v-col cols="12" sm="6" md="4">
               <v-select
-                v-model="searchParams.intelligenceApptitude"
+                v-model="search_params.intelligence_apptitude"
                 clearable
-                :items="$options.rankSelections"
+                :items="$options.rank_selections"
                 label="かしこさ適性"
               ></v-select>
             </v-col>
             <v-col cols="12" sm="6" md="4">
               <v-select
-                v-model="searchParams.accuracyApptitude"
+                v-model="search_params.accuracy_apptitude"
                 clearable
-                :items="$options.rankSelections"
+                :items="$options.rank_selections"
                 label="命中適性"
               ></v-select>
             </v-col>
             <v-col cols="12" sm="6" md="4">
               <v-select
-                v-model="searchParams.avoidanceApptitude"
+                v-model="search_params.avoidance_apptitude"
                 clearable
-                :items="$options.rankSelections"
+                :items="$options.rank_selections"
                 label="回避適性"
               ></v-select>
             </v-col>
             <v-col cols="12" sm="6" md="4">
               <v-select
-                v-model="searchParams.defenceApptitude"
+                v-model="search_params.defence_apptitude"
                 clearable
-                :items="$options.rankSelections"
+                :items="$options.rank_selections"
                 label="丈夫さ適性"
               ></v-select>
             </v-col>
             <v-col cols="12">
               <v-range-slider
-                v-model="searchParams.lifeSpan"
+                v-model="search_params.life_span"
                 max="500"
                 min="250"
                 thumb-label="always"
@@ -101,7 +101,7 @@
             </v-col>
             <v-col cols="12">
               <v-range-slider
-                v-model="searchParams.character"
+                v-model="search_params.character"
                 max="100"
                 min="-100"
                 thumb-label="always"
@@ -110,7 +110,7 @@
             </v-col>
             <v-col cols="12">
               <v-range-slider
-                v-model="searchParams.gutsSpeed"
+                v-model="search_params.guts_speed"
                 max="19"
                 min="6"
                 thumb-label="always"
@@ -119,7 +119,7 @@
             </v-col>
             <v-col cols="12" sm="6" md="4">
               <v-select
-                v-model="searchParams.growType"
+                v-model="search_params.grow_type"
                 clearable
                 :items="[
                   { text: '早熟', value: 1 },
@@ -132,15 +132,15 @@
             </v-col>
             <v-col cols="12" sm="6" md="4">
               <v-select
-                v-model="searchParams.movingSpeed"
+                v-model="search_params.moving_speed"
                 clearable
-                :items="$options.rankSelections"
+                :items="$options.rank_selections"
                 label="移動スピード"
               ></v-select>
             </v-col>
             <v-col cols="12">
               <v-select
-                v-model="searchParams.conditions"
+                v-model="search_params.conditions"
                 clearable
                 :items="[
                   { text: '底力', value: 1 },
@@ -178,30 +178,31 @@
 </template>
       
 <script>
+const axios = require("axios");
 export default {
   name: "SearchDialog",
   props: [],
   data: () => ({
     dialog: false,
-    searchParams: {
+    search_params: {
       name: "",
-      mainType: null,
-      subType: null,
-      lifeApptitude: null,
-      powerApptitude: null,
-      intelligenceApptitude: null,
-      accuracyApptitude: null,
-      avoidanceApptitude: null,
-      defenceApptitude: null,
-      lifeSpan: [250, 500],
+      main_type: null,
+      sub_type: null,
+      life_apptitude: null,
+      power_apptitude: null,
+      intelligence_apptitude: null,
+      accuracy_apptitude: null,
+      avoidance_apptitude: null,
+      defence_apptitude: null,
+      life_span: [250, 500],
       character: [-100, 100],
-      gutsSpeed: [6, 19],
-      growType: null,
-      movingSpeed: null,
+      guts_speed: [6, 19],
+      grow_type: null,
+      moving_speed: null,
       conditions: [],
     },
   }),
-  rankSelections: [
+  rank_selections: [
     { text: "E", value: 1 },
     { text: "D", value: 2 },
     { text: "C", value: 3 },
@@ -210,8 +211,11 @@ export default {
   ],
   methods: {
     submit() {
-      console.log(this.searchParams);
-
+      console.log(this.search_params);
+      axios.get('http://localhost:3000/monster_search.json', { params: this.search_params })
+      .then((data) => {
+        console.log(data)
+      })
       // this.dialog = false
     },
     clear() {
