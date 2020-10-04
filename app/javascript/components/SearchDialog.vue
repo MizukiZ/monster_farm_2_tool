@@ -22,11 +22,7 @@
               <v-select
                 v-model="search_params.main_type"
                 clearable
-                :items="[
-                  { text: 'A', value: 1 },
-                  { text: 'B', value: 2 },
-                  { text: 'C', value: 3 },
-                ]"
+                :items="$options.family_type_selections"
                 label="メイン種族"
               ></v-select>
             </v-col>
@@ -34,11 +30,7 @@
               <v-select
                 v-model="search_params.sub_type"
                 clearable
-                :items="[
-                  { text: 'A', value: 1 },
-                  { text: 'B', value: 2 },
-                  { text: 'C', value: 3 },
-                ]"
+                :items="$options.family_type_selections"
                 label="サブ種族"
               ></v-select>
             </v-col>
@@ -121,12 +113,7 @@
               <v-select
                 v-model="search_params.grow_type"
                 clearable
-                :items="[
-                  { text: '早熟', value: 1 },
-                  { text: '普通', value: 2 },
-                  { text: '持続', value: 3 },
-                  { text: '晩成', value: 4 },
-                ]"
+                :items="$options.grow_type_selections"
                 label="成長タイプ"
               ></v-select>
             </v-col>
@@ -142,21 +129,7 @@
               <v-select
                 v-model="search_params.conditions"
                 clearable
-                :items="[
-                  { text: '底力', value: 1 },
-                  { text: '逆上', value: 2 },
-                  { text: '根性', value: 3 },
-                  { text: '集中', value: 4 },
-                  { text: '闘魂', value: 5 },
-                  { text: '憤怒', value: 6 },
-                  { text: '我慢', value: 7 },
-                  { text: '余裕', value: 8 },
-                  { text: '必死', value: 9 },
-                  { text: '元気', value: 10 },
-                  { text: '本気', value: 11 },
-                  { text: '泥酔', value: 12 },
-                  { text: '団結', value: 13 },
-                ]"
+                :items="$options.condition_selections"
                 attach
                 chips
                 label="状態変化"
@@ -202,6 +175,46 @@ export default {
       conditions: [],
     },
   }),
+  family_type_selections: [
+    {text: "ピクシー", value: 1},
+    {text: "ドラゴン", value: 2},
+    {text: "ケンタウロス", value: 3},
+    {text: "コロペンドラ", value: 4},
+    {text: "ビークロン", value: 5},
+    {text: "ヘンガー", value: 6},
+    {text: "チャッキー", value: 7},
+    {text: "ゴーレム", value: 8},
+    {text: "ロードランナー", value: 9},
+    {text: "デュラハン", value: 10},
+    {text: "アローヘッド", value: 11},
+    {text: "ライガー", value: 12},
+    {text: "ホッパー", value: 13},
+    {text: "ハム", value: 14},
+    {text: "バクー", value: 15},
+    {text: "ガリ", value: 16},
+    {text: "アーケロ", value: 17},
+    {text: "グジラ", value: 18},
+    {text: "バジャール", value: 19},
+    {text: "ニャー", value: 20},
+    {text: "ヒノトリ", value: 21},
+    {text: "ゴースト", value: 22},
+    {text: "メタルナー", value: 23},
+    {text: "スエゾー", value: 24},
+    {text: "ジール", value: 25},
+    {text: "モッチー", value: 26},
+    {text: "ジョーカー", value: 27},
+    {text: "ネンドロ", value: 28},
+    {text: "ゲル", value: 29},
+    {text: "ウンディーネ", value: 30},
+    {text: "ナイトン", value: 31},
+    {text: "モック", value: 32},
+    {text: "ダックン", value: 33},
+    {text: "プラント", value: 34},
+    {text: "モノリス", value: 35},
+    {text: "ラウー", value: 36},
+    {text: "ワーム", value: 37},
+    {text: "ナーガ", value: 38}
+    ],
   rank_selections: [
     { text: "E", value: 1 },
     { text: "D", value: 2 },
@@ -209,13 +222,37 @@ export default {
     { text: "B", value: 4 },
     { text: "A", value: 5 },
   ],
+  grow_type_selections: [
+    { text: "早熟", value: 1 },
+    { text: "普通", value: 2 },
+    { text: "持続", value: 3 },
+    { text: "晩成", value: 4 },
+  ],
+  condition_selections: [
+    { text: "底力", value: 1 },
+    { text: "逆上", value: 2 },
+    { text: "根性", value: 3 },
+    { text: "集中", value: 4 },
+    { text: "闘魂", value: 5 },
+    { text: "憤怒", value: 6 },
+    { text: "我慢", value: 7 },
+    { text: "余裕", value: 8 },
+    { text: "必死", value: 9 },
+    { text: "元気", value: 10 },
+    { text: "本気", value: 11 },
+    { text: "泥酔", value: 12 },
+    { text: "団結", value: 13 },
+  ],
   methods: {
     submit() {
       console.log(this.search_params);
-      axios.get('http://localhost:3000/monster_search.json', { params: this.search_params })
-      .then((data) => {
-        console.log(data)
-      })
+      axios
+        .get("http://localhost:3000/monster_search.json", {
+          params: this.search_params,
+        })
+        .then((data) => {
+          console.log(data);
+        });
       // this.dialog = false
     },
     clear() {
