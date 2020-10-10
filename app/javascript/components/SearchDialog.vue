@@ -245,15 +245,14 @@ export default {
   ],
   methods: {
     submit() {
-      console.log(this.search_params);
       axios
         .get("http://localhost:3000/monster_search.json", {
           params: this.search_params,
         })
         .then((data) => {
-          console.log(data);
+          this.$emit('searchResultUpdate', data.data.monsters)
         });
-      // this.dialog = false
+      this.dialog = false
     },
     clear() {
       this.name = "";

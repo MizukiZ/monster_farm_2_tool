@@ -4,18 +4,24 @@
   <v-app-bar app>
     <v-toolbar-title>モンスターファーム２　サーチライト</v-toolbar-title>
     <v-spacer></v-spacer>
-    <SearchDialog/>
+    <SearchDialog @searchResultUpdate="handleSearchResult" />
   </v-app-bar>
-
-  <!-- Sizes your content based upon application components -->
   <v-main>
-
-    <!-- Provides the application the proper gutter -->
+    <v-row>
+      <v-col
+        v-for="monster in searchResults"
+        :key="monster.no"
+        sm="12"
+        md="6"
+        lg="4"
+      >
+        <MonsterCard :monsterData="monster"/>
+      </v-col>
+    </v-row>
     <v-container fluid>
       
     </v-container>
   </v-main>
-
   <v-footer app>
     <!-- -->
   </v-footer>
@@ -28,6 +34,7 @@ import ParameterChart from "./components/ParameterChart";
 import IconCard from "./components/IconCard";
 import ApptitudeOrder from "./components/ApptitudeOrder";
 import SearchDialog from "./components/SearchDialog";
+import MonsterCard from "./components/MonsterCard";
 export default {
   components: {
     ApptitudeChart,
@@ -35,10 +42,18 @@ export default {
     IconCard,
     ApptitudeOrder,
     SearchDialog,
+    MonsterCard
   },
   data: function () {
-    return {};
+    return {
+      searchResults: []
+    };
   },
+  methods: {
+    handleSearchResult(newSearchResult) {
+      this.searchResults = newSearchResult 
+    }
+  }
 };
 </script>
 
