@@ -1,6 +1,6 @@
 <template>
   <v-card link @click.stop="openDetailDialog">
-    <MonsterDetail :monsterData="monsterData" ref="detailDialog" />
+    <MonsterDetail :monsterData="monsterData" :fromMonsterListDialog="fromMonsterListDialog" ref="detailDialog"/>
     <v-container fluid ma-0 pa-0>
       <v-row class="text-center" align="center">
         <v-col xs="6" class="font-weight-bold">
@@ -27,7 +27,7 @@ import MonsterDetail from "./MonsterDetail";
 export default {
   components: { MonsterDetail },
   name: "MonsterCard",
-  props: ["monsterData"],
+  props: ["monsterData", "fromMonsterListDialog"],
   methods: {
     openDetailDialog(){
       this.$refs.detailDialog.updateDialogStatus()

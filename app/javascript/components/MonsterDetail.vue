@@ -16,6 +16,7 @@
             `No.${monsterData.no}  ${monsterData.name} (${monsterData.main_type} x ${monsterData.sub_type})`
           }}</v-toolbar-title>
           <v-spacer></v-spacer>
+          <MonsterListDialog :monsterNo="monsterData.no" v-show="!fromMonsterListDialog"/>
         </v-toolbar>
 
         <v-row>
@@ -116,21 +117,22 @@
   </v-row>
 </template>
 
-
 <script>
 import ApptitudeChart from "./ApptitudeChart";
 import ParameterChart from "./ParameterChart";
 import ApptitudeOrder from "./ApptitudeOrder";
 import IconCard from "./IconCard";
+import MonsterListDialog from "./MonsterListDialog";
+
 export default {
   name: "MonsterDetail",
-  components: { ApptitudeChart, ParameterChart, ApptitudeOrder, IconCard },
+  components: { ApptitudeChart, ParameterChart, ApptitudeOrder, IconCard, MonsterListDialog },
   data() {
     return {
       dialog: false,
     };
   },
-  props: ["monsterData"],
+  props: ["monsterData", "fromMonsterListDialog"],
   methods: {
     updateDialogStatus() {
       this.dialog = true;

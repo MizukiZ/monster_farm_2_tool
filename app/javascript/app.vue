@@ -16,16 +16,16 @@
             md="6"
             lg="4"
           >
-            <MonsterCard :monsterData="monster" />
+            <MonsterCard :monsterData="monster"/>
           </v-col>
         </v-row>
-
         <div class="text-center">
           <v-pagination
             v-model="page"
             :length="totalPages"
             :total-visible="9"
-            ></v-pagination>
+            >
+          </v-pagination>
         </div>
       </v-container>
     </v-main>
@@ -66,17 +66,17 @@ export default {
       this.totalPages = newSearchResult.pagination_total_pages;
     },
   },
-  // mounted() {
-  //   //this is only for debug purposes
-  //   axios
-  //     .get("http://localhost:3000/monster_search.json", {
-  //       params: { main_family_type_id: 8 },
-  //     })
-  //     .then((data) => {
-  //       this.searchResults = data.data.monsters;
-  //       this.totalPages = data.data.pagination_total_pages;
-  //     });
-  // },
+  mounted() {
+    //this is only for debug purposes
+    axios
+      .get("http://localhost:3000/monster_search.json", {
+        params: { main_family_type_id: 8 },
+      })
+      .then((data) => {
+        this.searchResults = data.data.monsters;
+        this.totalPages = data.data.pagination_total_pages;
+      });
+  },
 };
 </script>
 
