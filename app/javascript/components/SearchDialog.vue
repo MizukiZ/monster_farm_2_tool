@@ -154,7 +154,7 @@
 const axios = require("axios");
 export default {
   name: "SearchDialog",
-  props: [],
+  props: ["page"],
   data: () => ({
     dialog: false,
     search_params: {
@@ -247,10 +247,10 @@ export default {
     submit() {
       axios
         .get("http://localhost:3000/monster_search.json", {
-          params: this.search_params,
+          params: {...this.search_params, ...{ page: this.page }},
         })
         .then((data) => {
-          this.$emit('searchResultUpdate', data.data.monsters)
+          this.$emit('searchResultUpdate', data.data)
         });
       this.dialog = false
     },
@@ -258,5 +258,10 @@ export default {
       this.name = "";
     },
   },
+  watch: {
+    page(pageNum){
+      this.submit()
+    }
+  }
 };
 </script>

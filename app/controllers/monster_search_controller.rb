@@ -43,5 +43,7 @@ class MonsterSearchController < ApplicationController
 
       @monsters = @monsters.where(id: monster_ids)
     end
+
+    @monsters = @monsters.page(params[:page]).per(15)
   end
 end
