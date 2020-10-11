@@ -20,7 +20,7 @@
             </v-col>
             <v-col cols="12" sm="6" md="4">
               <v-select
-                v-model="search_params.main_type"
+                v-model="search_params.main_family_type_id"
                 clearable
                 :items="$options.family_type_selections"
                 label="メイン種族"
@@ -28,7 +28,7 @@
             </v-col>
             <v-col cols="12" sm="6" md="4">
               <v-select
-                v-model="search_params.sub_type"
+                v-model="search_params.sub_family_type_id"
                 clearable
                 :items="$options.family_type_selections"
                 label="サブ種族"
@@ -154,13 +154,13 @@
 const axios = require("axios");
 export default {
   name: "SearchDialog",
-  props: [],
+  props: ["page"],
   data: () => ({
     dialog: false,
     search_params: {
       name: "",
-      main_type: null,
-      sub_type: null,
+      main_family_type_id: null,
+      sub_family_type_id: null,
       life_apptitude: null,
       power_apptitude: null,
       intelligence_apptitude: null,
@@ -245,19 +245,23 @@ export default {
   ],
   methods: {
     submit() {
-      console.log(this.search_params);
       axios
         .get("http://localhost:3000/monster_search.json", {
-          params: this.search_params,
+          params: {...this.search_params, ...{ page: this.page }},
         })
         .then((data) => {
-          console.log(data);
+          this.$emit('searchResultUpdate', data.data)
         });
-      // this.dialog = false
+      this.dialog = false
     },
     clear() {
       this.name = "";
     },
   },
+  watch: {
+    page(pageNum){
+      this.submit()
+    }
+  }
 };
 </script>

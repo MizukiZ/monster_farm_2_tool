@@ -1,4 +1,3 @@
-json.pagination_total_pages @monsters.total_pages
 json.monsters @monsters do |monster|
   json.no monster.id
   json.name monster.name

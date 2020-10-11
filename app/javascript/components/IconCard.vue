@@ -1,10 +1,10 @@
 <template>
-  <v-card width="300">
+  <v-card width="80%" :style="{ margin: 'auto' }" tile>
     <v-container fluid ma-0 pa-0>
     <v-row class="text-center">
-      <v-col xs="5" :style="{ background: cardProps.color }">
-        <v-card-text class="font-weight-bold white--text">
-          <v-icon color="#fff">{{ cardProps.icon }}</v-icon>
+      <v-col xs="5">
+        <v-card-text class="font-weight-bold" :style="{ color: cardProps.color }">
+          <v-icon :color="cardProps.color">{{ cardProps.icon }}</v-icon>
           {{ cardProps.iconText }}
         </v-card-text>
       </v-col>

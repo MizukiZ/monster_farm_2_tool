@@ -1,5 +1,5 @@
 <template>
-  <v-card width="400" class="text-center">
+  <v-card width="80%" :style="{ margin: 'auto' }" class="text-center">
     <v-list disabled rounded>
       <v-list-item-title
         class="font-weight-bold"

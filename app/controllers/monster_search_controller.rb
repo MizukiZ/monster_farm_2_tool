@@ -1,25 +1,35 @@
 class MonsterSearchController < ApplicationController
 
   def index
+    basic_search_parameters = [:main_family_type_id, :sub_family_type_id, :grow_type, :moving_speed]
+    accuray_search_parameters = [
+      :life_apptitude,
+      :power_apptitude,
+      :intelligence_apptitude,
+      :accuracy_apptitude,
+      :avoidance_apptitude,
+      :defence_apptitude
+    ]
+    range_search_parameters = [:life_span, :character, :guts_speed]
+
     @monsters = Monster.all
 
     @monsters = @monsters.where("monsters.name iLike '%#{params[:name]}%'") if params[:name].present?
-    @monsters = @monsters.where(main_family_type_id: params[:main_type]) if params[:main_type].present?
-    @monsters = @monsters.where(sub_family_type_id: params[:sub_type]) if params[:sub_type].present?
 
-    @monsters = @monsters.where(parameters: { life_apptitude: params[:life_apptitude] }) if params[:life_apptitude].present?
-    @monsters = @monsters.where(parameters: { power_apptitude: params[:power_apptitude] }) if params[:power_apptitude].present?
-    @monsters = @monsters.where(parameters: { intelligence_apptitude: params[:intelligence_apptitude] }) if params[:intelligence_apptitude].present?
-    @monsters = @monsters.where(parameters: { accuracy_apptitude: params[:accuracy_apptitude] }) if params[:accuracy_apptitude].present?
-    @monsters = @monsters.where(parameters: { avoidance_apptitude: params[:avoidance_apptitude] }) if params[:avoidance_apptitude].present?
-    @monsters = @monsters.where(parameters: { defence_apptitude: params[:defence_apptitude] }) if params[:defence_apptitude].present?
+    basic_search_parameters.each do |bsp|
+      @monsters = @monsters.where(bsp => params[bsp]) if params[bsp].present?
+    end
 
-    @monsters = @monsters.where(grow_type: params[:grow_type]) if params[:grow_type].present?
-    @monsters = @monsters.where(moving_speed: params[:moving_speed]) if params[:moving_speed].present?
+    accuray_search_parameters.each do |asp|
+      @monsters = @monsters.where(parameters: { asp => params[asp] }) if params[asp].present?
+    end
 
-    @monsters = @monsters.where(life_span: params[:life_span].first..params[:life_span].last) if params[:life_span].present?
-    @monsters = @monsters.where(character: params[:character].first..params[:character].last) if params[:character].present?
-    @monsters = @monsters.where(guts_speed: params[:guts_speed].first..params[:guts_speed].last) if params[:guts_speed].present?
+    range_search_parameters.each do |rsp|
+      if params[rsp].present?
+        min, max = params[rsp]
+        @monsters = @monsters.where(rsp => min..max)
+      end
+    end
 
     if params[:conditions].present? #TODO this method needs to be improved
       monster_ids = nil
@@ -34,5 +44,6 @@ class MonsterSearchController < ApplicationController
       @monsters = @monsters.where(id: monster_ids)
     end
 
+    @monsters = @monsters.page(params[:page]).per(15)
   end
 end
