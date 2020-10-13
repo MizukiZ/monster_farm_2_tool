@@ -12,4 +12,15 @@ class FamilyType < ApplicationRecord
     'ナイトン', 'モック', 'ダックン', 'プラント', 'モノリス',
     'ラウー', 'ワーム', 'ナーガ',
   ]
+
+  TYPES_IN_ENGLISH = [
+    'PIXIE', 'DRAGON', 'CENTAUR', 'COLOR_PANDORA', 'BEACLON',
+    'HENGER', 'WRACKY', 'GOLEM', 'ZUUM', 'DURAHAN',
+    'ARROW_HEAD', 'TIGER', 'HOPPER', 'HARE', 'BAKU',
+    'GALI', 'KATO', 'ZILLA', 'BAJARL', 'MEW',
+    'PHOENIX', 'GHOST', 'METALNER', 'SUEZO', 'JILL',
+    'MOCCHI', 'JOKER', 'GABOO', 'JELL', 'UNDINE',
+    'NITON', 'MOCK', 'DUCKEN', 'PLANT', 'MONOL',
+    'APE', 'WORM', 'NAGA',
+  ]
 end

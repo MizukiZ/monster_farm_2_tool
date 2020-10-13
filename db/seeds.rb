@@ -38,7 +38,7 @@ end
 
 # Create monsters
 alpha_to_int = { E: 1, D: 2, C: 3, B: 4, A: 5 }
-FamilyType::TYPES.each do |type|
+FamilyType::TYPES_IN_ENGLISH.each do |type|
   monster_csv_file = File.read(Rails.root.join('lib', 'seeds', "#{type}_data.csv"))
   csv = CSV.parse(monster_csv_file, headers: true, encoding: 'ISO-8859-1')
   csv.each do |row|
