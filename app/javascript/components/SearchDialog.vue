@@ -246,7 +246,7 @@ export default {
   methods: {
     submit() {
       axios
-        .get("http://localhost:3000/monster_search.json", {
+        .get("/monster_search.json", {
           params: {...this.search_params, ...{ page: this.page }},
         })
         .then((data) => {

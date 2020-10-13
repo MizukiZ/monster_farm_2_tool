@@ -59,7 +59,7 @@ export default {
       if (status) {
         axios
           .get(
-            `http://localhost:3000/monsters/${this.monsterNo}/best_matches.json`
+            `/monsters/${this.monsterNo}/best_matches.json`
           )
           .then((data) => {
             this.bestMatchMonsters = data.data.monsters;

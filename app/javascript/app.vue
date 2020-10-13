@@ -68,14 +68,14 @@ export default {
   },
   mounted() {
     //this is only for debug purposes
-    axios
-      .get("http://localhost:3000/monster_search.json", {
-        params: { main_family_type_id: 8 },
-      })
-      .then((data) => {
-        this.searchResults = data.data.monsters;
-        this.totalPages = data.data.pagination_total_pages;
-      });
+    // axios
+    //   .get("/monster_search.json", {
+    //     params: { main_family_type_id: 8 },
+    //   })
+    //   .then((data) => {
+    //     this.searchResults = data.data.monsters;
+    //     this.totalPages = data.data.pagination_total_pages;
+    //   });
   },
 };
 </script>
