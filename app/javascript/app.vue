@@ -12,7 +12,7 @@
           <v-col
             v-for="monster in searchResults"
             :key="monster.no"
-            sm="12"
+            cols="12"
             md="6"
             lg="4"
           >
