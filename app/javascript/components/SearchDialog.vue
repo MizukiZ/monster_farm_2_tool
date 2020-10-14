@@ -246,7 +246,7 @@ export default {
   methods: {
     submit() {
       axios
-        .get("/monster_search.json", {
+        .get(Routes.monster_search_index_path({format: 'json'}), {
           params: {...this.search_params, ...{ page: this.page }},
         })
         .then((data) => {

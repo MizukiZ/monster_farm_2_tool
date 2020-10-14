@@ -7,6 +7,8 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+import Routes from '../js-routes.js.erb'
+window.Routes = Routes
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

@@ -58,9 +58,7 @@ export default {
     dialog: function (status) {
       if (status) {
         axios
-          .get(
-            `/monsters/${this.monsterNo}/best_matches.json`
-          )
+          .get(Routes.monster_best_matches_path(this.monsterNo, { format: 'json' }))
           .then((data) => {
             this.bestMatchMonsters = data.data.monsters;
           });
