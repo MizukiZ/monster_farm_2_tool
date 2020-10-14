@@ -3,9 +3,17 @@
     <v-app-bar app>
       <v-toolbar-title>モンスターファーム２　サーチライト</v-toolbar-title>
       <v-spacer></v-spacer>
-      <SearchDialog @searchResultUpdate="handleSearchResult" ref="searchDialog" :page="page" />
+      <SearchDialog @searchSubmit="searchSubmit" @searchResultUpdate="handleSearchResult" ref="searchDialog" :page="page" />
     </v-app-bar>
     <v-main>
+
+    <v-progress-circular
+      v-if="loading"
+      :width="3"
+      color="red"
+      indeterminate
+    ></v-progress-circular>
+
       <h2 v-show="searchResults.length == 0">検索結果はありません</h2>
       <v-container fluid>
         <v-row>
@@ -55,15 +63,21 @@ export default {
   },
   data: function () {
     return {
+      loading: false,
       searchResults: [],
       totalPages: 0,
       page: 1,
     };
   },
   methods: {
+    searchSubmit() {
+      this.loading = true
+    },
     handleSearchResult(newSearchResult) {
       this.searchResults = newSearchResult.monsters;
       this.totalPages = newSearchResult.pagination_total_pages;
+
+      this.loading = false
     },
   },
   mounted() {

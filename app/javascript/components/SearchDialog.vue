@@ -245,6 +245,7 @@ export default {
   ],
   methods: {
     submit() {
+      this.$emit('searchSubmit')
       axios
         .get(Routes.monster_search_index_path({format: 'json'}), {
           params: {...this.search_params, ...{ page: this.page }},

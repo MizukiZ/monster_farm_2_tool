@@ -17,6 +17,13 @@
           <v-spacer></v-spacer>
         </v-toolbar>
         <v-container fluid>
+          <v-progress-circular
+            v-if="loading"
+            :width="3"
+            color="red"
+            indeterminate
+          ></v-progress-circular>
+
           <v-row>
             <v-col
               v-for="monster in bestMatchMonsters"
@@ -25,18 +32,13 @@
               md="6"
               lg="4"
             >
-              <MonsterCard :monsterData="monster" :fromMonsterListDialog="true"/>
+              <MonsterCard
+                :monsterData="monster"
+                :fromMonsterListDialog="true"
+              />
             </v-col>
           </v-row>
         </v-container>
-        <!-- <div class="text-center">
-          <v-pagination
-            v-model="page"
-            :length="totalPages"
-            :total-visible="9"
-            >
-          </v-pagination>
-        </div> -->
       </v-card>
     </v-dialog>
   </v-row>
@@ -46,21 +48,27 @@
 const axios = require("axios");
 export default {
   props: ["monsterNo"],
-  components: { MonsterCard: () => import('./MonsterCard.vue') },
+  components: { MonsterCard: () => import("./MonsterCard.vue") },
   name: "MonsterListDialog",
   data() {
     return {
       bestMatchMonsters: [],
       dialog: false,
+      loading: false,
     };
   },
   watch: {
     dialog: function (status) {
       if (status) {
+        this.loading = true;
+
         axios
-          .get(Routes.monster_best_matches_path(this.monsterNo, { format: 'json' }))
+          .get(
+            Routes.monster_best_matches_path(this.monsterNo, { format: "json" })
+          )
           .then((data) => {
             this.bestMatchMonsters = data.data.monsters;
+            this.loading = false;
           });
       }
     },
