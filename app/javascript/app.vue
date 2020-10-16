@@ -7,13 +7,7 @@
     </v-app-bar>
     <v-main>
 
-    <v-progress-circular
-      v-if="loading"
-      :width="3"
-      color="red"
-      indeterminate
-    ></v-progress-circular>
-
+    <OverlayProgressIcon :loading="loading" />
       <h2 v-show="searchResults.length == 0">検索結果はありません</h2>
       <v-container fluid>
         <v-row>
@@ -52,6 +46,7 @@ import IconCard from "./components/IconCard";
 import ApptitudeOrder from "./components/ApptitudeOrder";
 import SearchDialog from "./components/SearchDialog";
 import MonsterCard from "./components/MonsterCard";
+import OverlayProgressIcon from "./components/OverlayProgressIcon";
 export default {
   components: {
     ApptitudeChart,
@@ -60,6 +55,7 @@ export default {
     ApptitudeOrder,
     SearchDialog,
     MonsterCard,
+    OverlayProgressIcon
   },
   data: function () {
     return {
@@ -70,7 +66,8 @@ export default {
     };
   },
   methods: {
-    searchSubmit() {
+    searchSubmit(pageNum) {
+      this.page = pageNum
       this.loading = true
     },
     handleSearchResult(newSearchResult) {
