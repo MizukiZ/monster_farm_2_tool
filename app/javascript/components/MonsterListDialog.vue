@@ -17,13 +17,7 @@
           <v-spacer></v-spacer>
         </v-toolbar>
         <v-container fluid>
-          <v-progress-circular
-            v-if="loading"
-            :width="3"
-            color="red"
-            indeterminate
-          ></v-progress-circular>
-
+          <OverlayProgressIcon :loading="loading" />
           <v-row>
             <v-col
               v-for="monster in bestMatchMonsters"
@@ -45,10 +39,12 @@
 </template>
 
 <script>
+import OverlayProgressIcon from './OverlayProgressIcon'
+
 const axios = require("axios");
 export default {
   props: ["monsterNo"],
-  components: { MonsterCard: () => import("./MonsterCard.vue") },
+  components: { OverlayProgressIcon, MonsterCard: () => import("./MonsterCard.vue") },
   name: "MonsterListDialog",
   data() {
     return {

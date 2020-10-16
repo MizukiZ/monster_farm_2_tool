@@ -144,7 +144,7 @@
         <v-btn color="blue darken-1" text @click="dialog = false">
           Close
         </v-btn>
-        <v-btn color="blue darken-1" text @click="submit">Search</v-btn>
+        <v-btn color="blue darken-1" text @click="submit()">Search</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -244,11 +244,11 @@ export default {
     { text: "団結", value: 13 },
   ],
   methods: {
-    submit() {
-      this.$emit('searchSubmit')
+    submit(pageNum = 1) {
+      this.$emit('searchSubmit', pageNum)
       axios
         .get(Routes.monster_search_index_path({format: 'json'}), {
-          params: {...this.search_params, ...{ page: this.page }},
+          params: {...this.search_params, ...{ page: pageNum }},
         })
         .then((data) => {
           this.$emit('searchResultUpdate', data.data)
@@ -261,7 +261,7 @@ export default {
   },
   watch: {
     page(pageNum){
-      this.submit()
+      this.submit(pageNum)
     }
   }
 };
