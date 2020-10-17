@@ -3,7 +3,7 @@
     <v-app-bar app>
       <v-toolbar-title>モンスターファーム２　サーチライト</v-toolbar-title>
       <v-spacer></v-spacer>
-      <SearchDialog @searchSubmit="searchSubmit" @searchResultUpdate="handleSearchResult" ref="searchDialog" :page="page" />
+      <SearchDialog @searchSubmit="searchSubmit" @searchResultUpdate="handleSearchResult" :page="page" />
     </v-app-bar>
     <v-main>
 
@@ -44,9 +44,10 @@ import ApptitudeChart from "./components/ApptitudeChart";
 import ParameterChart from "./components/ParameterChart";
 import IconCard from "./components/IconCard";
 import ApptitudeOrder from "./components/ApptitudeOrder";
-import SearchDialog from "./components/SearchDialog";
+import SearchDialog from "./components/SearchDialog"
 import MonsterCard from "./components/MonsterCard";
 import OverlayProgressIcon from "./components/OverlayProgressIcon";
+
 export default {
   components: {
     ApptitudeChart,
