@@ -1,6 +1,6 @@
 <template>
   <v-card width="80%" :style="{ margin: 'auto' }" class="text-center">
-    <v-list disabled rounded>
+    <v-list disabled rounded :style="{background: '#F4F5FA'}">
       <v-list-item-title
         class="font-weight-bold"
         :style="{ 'align-items': 'center' }"

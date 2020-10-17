@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="800px">
     <template v-slot:activator="{ on, attrs }">
-      <v-btn color="primary" outlined icon v-bind="attrs" v-on="on">
+      <v-btn dark outlined icon v-bind="attrs" v-on="on">
         <v-icon>mdi-magnify-scan</v-icon>
       </v-btn>
     </template>
