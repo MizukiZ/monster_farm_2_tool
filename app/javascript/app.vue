@@ -8,8 +8,13 @@
     <v-main>
 
     <OverlayProgressIcon :loading="loading" />
-      <h2 v-show="searchResults.length == 0">検索結果はありません</h2>
       <v-container fluid>
+      <v-row v-show="searchResults.length == 0">
+        <v-col cols="12">
+          <h3 class="text-center">検索結果はありません</h3>
+        </v-col>
+      </v-row>
+      
         <v-row>
           <v-col
             v-for="monster in searchResults"
@@ -23,6 +28,7 @@
         </v-row>
         <div class="text-center">
           <v-pagination
+            v-show="searchResults.length != 0"
             v-model="page"
             :length="totalPages"
             :total-visible="9"
