@@ -7,17 +7,32 @@
       eager
     >
       <v-card>
-        <v-toolbar>
+        <v-app-bar fixed>
           <v-btn @click="dialog = false">
             <v-icon>mdi-close</v-icon>
           </v-btn>
           <v-spacer></v-spacer>
-          <v-toolbar-title class="font-weight-bold">{{
-            `No.${monsterData.no}  ${monsterData.name} (${monsterData.main_type} x ${monsterData.sub_type})`
-          }}</v-toolbar-title>
+          <v-toolbar-title :style="{ fontSize: $vuetify.breakpoint.smAndDown ? '1em' : '1.25em' }">
+            詳細データ
+          </v-toolbar-title>
           <v-spacer></v-spacer>
-          <MonsterListDialog :monsterNo="monsterData.no" v-show="!fromMonsterListDialog"/>
-        </v-toolbar>
+          <MonsterListDialog :monsterNo="monsterData.no" v-show="!fromMonsterListDialog" />
+        </v-app-bar>
+
+        <v-row class="text-center font-weight-bold" :style="{ fontSize: $vuetify.breakpoint.smAndDown ? '1em' : '1.25em' }">
+          <v-col cols='12'>
+            <div>
+              {{`No.${monsterData.no}`}}
+            </div>
+          </v-col>
+          <v-col cols='12'>
+            <div>
+              {{
+                `${monsterData.name} (${monsterData.main_type} x ${monsterData.sub_type})`
+              }}
+            </div>
+          </v-col>
+        </v-row>
 
         <v-row>
           <v-col cols="12" md="6" sm="12">
@@ -126,7 +141,13 @@ import MonsterListDialog from "./MonsterListDialog";
 
 export default {
   name: "MonsterDetail",
-  components: { ApptitudeChart, ParameterChart, ApptitudeOrder, IconCard, MonsterListDialog },
+  components: {
+    ApptitudeChart,
+    ParameterChart,
+    ApptitudeOrder,
+    IconCard,
+    MonsterListDialog,
+  },
   data() {
     return {
       dialog: false,

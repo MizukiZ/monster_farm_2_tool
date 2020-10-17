@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app>
-      <v-toolbar-title>モンスターファーム２　サーチライト</v-toolbar-title>
+      <v-toolbar-title :style="{ fontSize: $vuetify.breakpoint.smAndDown ? '1em' : '1.25em' }">モンスターファーム２　サーチライト</v-toolbar-title>
       <v-spacer></v-spacer>
       <SearchDialog @searchSubmit="searchSubmit" @searchResultUpdate="handleSearchResult" :page="page" />
     </v-app-bar>
