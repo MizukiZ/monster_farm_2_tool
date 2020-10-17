@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <v-app-bar app>
+  <v-app :style="{background: '#F4F5FA'}">
+    <v-app-bar app dark>
       <v-toolbar-title :style="{ fontSize: $vuetify.breakpoint.smAndDown ? '1em' : '1.25em' }">モンスターファーム２　サーチライト</v-toolbar-title>
       <v-spacer></v-spacer>
       <SearchDialog @searchSubmit="searchSubmit" @searchResultUpdate="handleSearchResult" :page="page" />
@@ -28,6 +28,7 @@
         </v-row>
         <div class="text-center">
           <v-pagination
+            dark
             v-show="searchResults.length != 0"
             v-model="page"
             :length="totalPages"
@@ -86,14 +87,14 @@ export default {
   },
   mounted() {
     //this is only for debug purposes
-    // axios
-    //   .get("/monster_search.json", {
-    //     params: { main_family_type_id: 8 },
-    //   })
-    //   .then((data) => {
-    //     this.searchResults = data.data.monsters;
-    //     this.totalPages = data.data.pagination_total_pages;
-    //   });
+    axios
+      .get("/monster_search.json", {
+        params: { main_family_type_id: 8 },
+      })
+      .then((data) => {
+        this.searchResults = data.data.monsters;
+        this.totalPages = data.data.pagination_total_pages;
+      });
   },
 };
 </script>

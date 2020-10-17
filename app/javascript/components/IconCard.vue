@@ -1,5 +1,5 @@
 <template>
-  <v-card width="80%" :style="{ margin: 'auto' }" tile>
+  <v-card width="80%" :style="{ margin: 'auto', background: '#F4F5FA' }" tile>
     <v-container fluid ma-0 pa-0>
     <v-row class="text-center">
       <v-col xs="5">

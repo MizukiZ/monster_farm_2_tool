@@ -1,14 +1,14 @@
 <template>
   <v-row justify="end">
-    <v-dialog v-model="dialog" fullscreen>
+    <v-dialog v-model="dialog" fullscreen >
       <template v-slot:activator="{ on }">
         <v-btn v-on="on">
           合体相性
           <v-icon>mdi-heart</v-icon>
         </v-btn>
       </template>
-      <v-card>
-        <v-toolbar>
+      <v-card :style="{background: '#F4F5FA'}">
+        <v-toolbar dark>
           <v-btn @click="dialog = false">
             <v-icon>mdi-close</v-icon>
           </v-btn>

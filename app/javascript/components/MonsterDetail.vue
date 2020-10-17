@@ -6,8 +6,8 @@
       transition="dialog-bottom-transition"
       eager
     >
-      <v-card>
-        <v-app-bar fixed>
+      <v-card :style="{background: '#F4F5FA'}">
+        <v-toolbar dark>
           <v-btn @click="dialog = false">
             <v-icon>mdi-close</v-icon>
           </v-btn>
@@ -17,7 +17,7 @@
           </v-toolbar-title>
           <v-spacer></v-spacer>
           <MonsterListDialog :monsterNo="monsterData.no" v-show="!fromMonsterListDialog" />
-        </v-app-bar>
+        </v-toolbar>
 
         <v-row class="text-center font-weight-bold" :style="{ fontSize: $vuetify.breakpoint.smAndDown ? '1em' : '1.25em' }">
           <v-col cols='12'>
