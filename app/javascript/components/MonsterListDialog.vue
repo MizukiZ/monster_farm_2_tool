@@ -1,9 +1,9 @@
 <template>
-  <v-row justify="center">
+  <v-row justify="end">
     <v-dialog v-model="dialog" fullscreen>
       <template v-slot:activator="{ on }">
         <v-btn v-on="on">
-          合体相性検索
+          合体相性
           <v-icon>mdi-heart</v-icon>
         </v-btn>
       </template>
@@ -39,12 +39,15 @@
 </template>
 
 <script>
-import OverlayProgressIcon from './OverlayProgressIcon'
+import OverlayProgressIcon from "./OverlayProgressIcon";
 
 const axios = require("axios");
 export default {
   props: ["monsterNo"],
-  components: { OverlayProgressIcon, MonsterCard: () => import("./MonsterCard.vue") },
+  components: {
+    OverlayProgressIcon,
+    MonsterCard: () => import("./MonsterCard.vue"),
+  },
   name: "MonsterListDialog",
   data() {
     return {
