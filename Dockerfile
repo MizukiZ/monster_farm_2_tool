@@ -19,7 +19,7 @@ WORKDIR $APP_ROOT
 COPY ./Gemfile $APP_ROOT/Gemfile
 COPY ./Gemfile.lock $APP_ROOT/Gemfile.lock
 
-RUN gem install bundler:1.17.2
+RUN gem install bundler
 RUN bundle install
 
 COPY entrypoint.sh /usr/bin/
