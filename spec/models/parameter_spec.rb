@@ -28,5 +28,50 @@
 require 'rails_helper'
 
 RSpec.describe Parameter, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    @monster = FactoryBot.create(:monster)
+  end
+
+  subject {
+    @monster.build_parameter(
+      life: 100,
+      life_apptitude: 3,
+      life_apptitude_index: 5,
+      power: 170,
+      power_apptitude: 5,
+      power_apptitude_index: 1,
+      intelligence: 160,
+      intelligence_apptitude: 5,
+      intelligence_apptitude_index: 2,
+      accuracy: 120,
+      accuracy_apptitude: 3,
+      accuracy_apptitude_index: 3,
+      avoidance: 90,
+      avoidance_apptitude: 2,
+      avoidance_apptitude_index: 6,
+      defence: 110,
+      defence_apptitude: 3,
+      defence_apptitude_index: 4,
+    )
+  }
+
+  it 'is valid with valid attributes' do
+    expect(subject).to be_valid
+  end
+
+  numericality_check_columns = [
+    :life, :life_apptitude, :life_apptitude_index,
+    :power, :power_apptitude, :power_apptitude_index,
+    :intelligence, :intelligence_apptitude, :intelligence_apptitude_index,
+    :accuracy, :accuracy_apptitude, :accuracy_apptitude_index,
+    :avoidance, :avoidance_apptitude, :avoidance_apptitude_index,
+    :defence, :defence_apptitude, :defence_apptitude_index
+  ]
+
+  numericality_check_columns.each do |ncc|
+    it "is not valid without non number #{ncc}" do
+      subject.public_send("#{ncc}=", 'non_number')
+      expect(subject).to_not be_valid
+    end
+  end
 end

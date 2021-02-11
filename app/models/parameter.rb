@@ -28,4 +28,12 @@
 class Parameter < ApplicationRecord
   belongs_to :monster
   include NumberToRank
+
+  validates :life, :life_apptitude, :life_apptitude_index,
+  :power, :power_apptitude, :power_apptitude_index,
+  :intelligence, :intelligence_apptitude, :intelligence_apptitude_index,
+  :accuracy, :accuracy_apptitude, :accuracy_apptitude_index,
+  :avoidance, :avoidance_apptitude, :avoidance_apptitude_index,
+  :defence, :defence_apptitude, :defence_apptitude_index,
+  numericality: { greater_than_or_equal_to: 0 }
 end
