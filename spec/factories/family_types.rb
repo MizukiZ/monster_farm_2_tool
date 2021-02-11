@@ -8,11 +8,14 @@
 #  updated_at :datetime         not null
 #
 FactoryBot.define do
-  factory :family_type_dragon, class: FamilyType do
-    name {'ドラゴン'}
-  end
-
-  factory :family_type_tiger, class: FamilyType do
-    name {'ライガー'}
+  factory :family_type do
+    name {'ピクシー'}
+    
+    trait :dragon do
+      name {'ドラゴン'}
+    end
+    trait :tiger do
+      name {'ライガー'}
+    end
   end
 end

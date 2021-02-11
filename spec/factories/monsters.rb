@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :monster do
     name { 'test monster' }
-    association :main_family_type, factory: :family_type_dragon
-    association :sub_family_type, factory: :family_type_tiger
+    association :main_family_type, factory: [:family_type, :dragon]
+    association :sub_family_type, factory: [:family_type, :tiger]
     association :grow_type
     character { -30 }
     moving_speed { 2 }

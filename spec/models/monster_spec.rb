@@ -18,8 +18,8 @@ require 'rails_helper'
 
 RSpec.describe Monster, type: :model do
   before do
-    @type_dragon = FactoryBot.create(:family_type_dragon)
-    @type_tiger = FactoryBot.create(:family_type_tiger)
+    @type_dragon = FactoryBot.create(:family_type, :dragon)
+    @type_tiger = FactoryBot.create(:family_type, :tiger)
     @grow_type = FactoryBot.create(:grow_type)
   end
 
