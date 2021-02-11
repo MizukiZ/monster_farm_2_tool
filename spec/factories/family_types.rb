@@ -1,16 +1,14 @@
 # == Schema Information
 #
-# Table name: conditions
+# Table name: family_types
 #
 #  id         :bigint           not null, primary key
-#  title      :text
+#  name       :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-require 'test_helper'
-
-class ConditionTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+FactoryBot.define do
+  factory :family_type do
+    
+  end
 end
