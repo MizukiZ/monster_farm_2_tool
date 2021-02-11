@@ -17,4 +17,7 @@ class Condition < ApplicationRecord
     '元気', '本気', '泥酔',
     '団結',
   ]
+
+  validates :title, presence: true
+  validates :title, inclusion: { in: TYPES }
 end
