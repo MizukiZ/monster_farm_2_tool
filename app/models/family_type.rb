@@ -1,7 +1,13 @@
+# == Schema Information
+#
+# Table name: family_types
+#
+#  id         :bigint           not null, primary key
+#  name       :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class FamilyType < ApplicationRecord
-  has_many :monsters_as_main, foreign_key: "main_family_type_id", class_name: "Monster"
-  has_many :monsters_as_sub, foreign_key: "sub_family_type_id", class_name: "Monster"
-
   TYPES = [
     'ピクシー', 'ドラゴン', 'ケンタウロス', 'コロペンドラ', 'ビークロン',
     'ヘンガー', 'チャッキー', 'ゴーレム', 'ロードランナー', 'デュラハン',
@@ -23,4 +29,11 @@ class FamilyType < ApplicationRecord
     'NITON', 'MOCK', 'DUCKEN', 'PLANT', 'MONOL',
     'APE', 'WORM', 'NAGA',
   ]
+
+  
+  has_many :monsters_as_main, foreign_key: "main_family_type_id", class_name: "Monster"
+  has_many :monsters_as_sub, foreign_key: "sub_family_type_id", class_name: "Monster"
+
+  validates :name, presence: true
+  validates :name, inclusion: { in: TYPES }
 end

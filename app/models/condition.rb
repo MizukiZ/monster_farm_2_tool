@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: conditions
+#
+#  id         :bigint           not null, primary key
+#  title      :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class Condition < ApplicationRecord
   has_and_belongs_to_many :monsters
 
@@ -8,4 +17,7 @@ class Condition < ApplicationRecord
     '元気', '本気', '泥酔',
     '団結',
   ]
+
+  validates :title, presence: true
+  validates :title, inclusion: { in: TYPES }
 end
