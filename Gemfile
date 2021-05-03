@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.0'
+ruby '3.0.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.1'
@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'kaminari'
 
 gem "js-routes"
+
+gem 'mimemagic', '~> 0.3.10'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
