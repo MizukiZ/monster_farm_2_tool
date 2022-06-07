@@ -1,6 +1,6 @@
 steps:
   - name: ":rspec:"
-    command: "rspec --color spec"
+    command: script/rspec.sh
     plugins:
       docker-compose#v3.9.0:
         run: web
