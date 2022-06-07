@@ -1,6 +1,6 @@
 steps:
   - name: ":rspec:"
-    command: rake db:setup
+    command: cd monster_farm_2_app
     plugins:
       docker-compose#v3.9.0:
         run: web
