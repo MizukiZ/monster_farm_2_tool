@@ -1,6 +1,6 @@
 steps:
   - name: ":rspec:"
-    command: cd monster_farm_2_app
+    command: rspec spec
     plugins:
       docker-compose#v3.9.0:
         run: web
