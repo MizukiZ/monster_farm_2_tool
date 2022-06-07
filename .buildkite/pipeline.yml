@@ -1,6 +1,6 @@
 steps:
   - name: ":rspec:"
-    command: rspec
+    command: bundle exec rspec
     plugins:
       docker-compose#v3.9.0:
         run: web
