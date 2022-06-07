@@ -1,6 +1,6 @@
 steps:
   - name: ":rspec:"
-    command: script/rspec.sh
+    command: ls
     plugins:
       docker-compose#v3.9.0:
         run: web
