@@ -1,6 +1,6 @@
 steps:
   - name: ":rspec:"
-    command: docker compose run web rspec spec
+    command: echo $(ls)
     plugins:
       docker-compose#v3.9.0:
         run: web
