@@ -1,6 +1,6 @@
 steps:
   - name: ":rspec:"
-    command: bundle exec rspec
+    command: echo "$PWD"
     plugins:
       docker-compose#v3.9.0:
         run: web
