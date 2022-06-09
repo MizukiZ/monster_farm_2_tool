@@ -1,7 +1,7 @@
 steps:
   - name: ":rspec:"
     command:
-      yarn install --check-files
+      yarn add --check-files
       "script/ci/rspec.sh"
     plugins:
       docker-compose#v3.9.0:
