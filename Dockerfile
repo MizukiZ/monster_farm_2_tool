@@ -28,5 +28,6 @@ ENTRYPOINT [ "entrypoint.sh" ]
 EXPOSE 3000
 ADD . $APP_ROOT
 
+RUN yarn install --check-files
 # Start the main process.
 CMD ["bundle","exec","rails", "server", "-b", "0.0.0.0"]
