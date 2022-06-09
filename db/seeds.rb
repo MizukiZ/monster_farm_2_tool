@@ -42,7 +42,7 @@ FamilyType::TYPES_IN_ENGLISH.each do |type|
   monster_csv_file = File.read(Rails.root.join('lib', 'seeds', "#{type}_data.csv"))
   csv = CSV.parse(monster_csv_file, headers: true, encoding: 'ISO-8859-1')
   csv.each do |row|
-    main_type, sub_type = row['family']&.split('×')
+    main_type, sub_type = row['family']&.split('x')
     life_a, power_a, intelligence_a, accuracy_a, avoidance_a, defence_a = row['apptitude']&.split('')&.map { |a| alpha_to_int[a.to_sym] }
     life_a_i, power_a_i, intelligence_a_i, accuracy_a_i, avoidance_a_i, defence_a_i = row['apptitude_order']&.split('')&.map(&:to_i)
     monster_data = {
