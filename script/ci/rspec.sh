@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-yarn add --check-files
+yarn install --check-files
 
 rake db:reset
 
